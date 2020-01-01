@@ -910,3 +910,23 @@ Media
 	add_filter('wp_generate_attachment_metadata','replace_uploaded_image');
 ?>
 
+
+<!-- #----------- -->
+if ( is_home() && ! is_front_page() )
+<!-- #----------- -->
+
+if ( is_front_page() && is_home() ) {
+// Default homepage
+
+} elseif ( is_front_page()){
+// Static homepage
+
+} elseif ( is_home()){
+
+// Blog page
+
+} else {
+
+// Everything else
+
+}
