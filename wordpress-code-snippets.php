@@ -930,3 +930,20 @@ if ( is_front_page() && is_home() ) {
 // Everything else
 
 }
+
+<!-- Customize Password Protected Page -->
+
+add_filter( 'the_password_form', 'custom_password_form' );
+function custom_password_form() {
+    global $post;
+    $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+    $o = '<form class="protected-post-form password-form-sty" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
+    ' . __( "<h2 class='orange-header'>To view our available resources, please enter your access code below:</h2>" ) . '
+    <label class="pass-label" for="' . $label . '">' . __( "Enter Access Code:" ) . ' </label><br /><input name="post_password" id="' . $label . '" type="password" style="background: #ffffff; border:1px solid #999; color:#000; padding:10px;" size="20" /><br /><input type="submit" name="Submit" class="button" value="' . esc_attr__( "Submit" ) . '" />
+        <p style="font-size:14px;margin:0px;">∗If you do not have an access code, please contact your SOL Sales Representative
+        to request access.</p>
+<style>.eltdf-vertical-align-containers .eltdf-position-right{float:right!important;text-align:right!important;width:250px!important}.eltdf-main-menu>ul>li>a{padding:0 9px!important}</style>
+</form>
+    ';
+    return $o;
+}
