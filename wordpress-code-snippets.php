@@ -1230,3 +1230,12 @@ endif;
 
 // Reset Post Data
 wp_reset_postdata();
+
+
+<!-- #----------- -->
+<!-- #----------- -->
+<!-- #----------- -->
+Code Snippets : https://www.billerickson.net/code/
+<!-- #----------- -->
+<!-- #----------- -->
+<!-- #----------- -->
