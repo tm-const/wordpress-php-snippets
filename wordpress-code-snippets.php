@@ -1239,3 +1239,13 @@ Code Snippets : https://www.billerickson.net/code/
 <!-- #----------- -->
 <!-- #----------- -->
 <!-- #----------- -->
+
+	
+	
+<!-- #----------- -->
+<!-- #----------- -->
+<!-- #----------- -->
+Wordpress Codex DashIcons : https://developer.wordpress.org/resource/dashicons/#translation
+<!-- #----------- -->
+<!-- #----------- -->
+<!-- #----------- -->
