@@ -1258,7 +1258,10 @@ Apply Custom CSS to Admin Area
 <!-- #----------- -->
 <!-- #----------- -->
 <!-- #----------- -->
+
 	
+****Option One: Inline CSS****
+/* Admin CSS inline styles */
 add_action('admin_head', 'my_custom_fonts');
 
 function my_custom_fonts() {
@@ -1270,5 +1273,13 @@ function my_custom_fonts() {
   </style>';
 }
 
-
-
+****Option Two: Reference CSS file***
+/* Admin CSS styles */
+function adminStylesCss() {
+    $url = get_settings('siteurl');
+    $url = $url . '/wp-content/themes/yourtheme/css/wp-admin.css';
+    echo '<!-- Admin CSS styles -->
+          <link rel="stylesheet" type="text/css" href="' . $url . '" />
+          <!-- /end Admin CSS styles -->';
+}
+add_action('admin_head', 'adminStylesCss');
