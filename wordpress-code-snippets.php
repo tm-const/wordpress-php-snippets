@@ -1290,3 +1290,30 @@ function admin_style() {
   wp_enqueue_style('admin-styles', get_template_directory_uri().'/admin.css');
 }
 add_action('admin_enqueue_scripts', 'admin_style');
+
+
+
+// Google Storage
+// Get service file
+
+    require get_template_directory() . '/vendor/autoload.php';
+    use Google\Cloud\Storage\StorageClient;
+    use Google\Cloud\ServiceBuilder;
+
+    function download_object($bucketName, $objectName, $destination)
+    {
+        $storage = new StorageClient([
+            'keyFilePath' => get_template_directory() . '/inc/json/kinetic-guild-304821-76cb4aac8519.json',
+        ]);
+        $bucket = $storage->bucket($bucketName);
+        $object = $bucket->object($objectName);
+        $object->downloadToFile($destination);
+        printf('Downloaded gs://%s/%s to %s' . PHP_EOL,
+            $bucketName, $objectName, basename($destination));
+    }
+
+    // CRONJOB Example:
+    function my_cronjob_action_test () {
+        // code to execute on cron run
+        download_object('postali_project', 'example.json', get_template_directory() . '/inc/json/example.json');
+    } add_action('my_cronjob_action_test', 'my_cronjob_action_test');
