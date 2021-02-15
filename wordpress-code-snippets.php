@@ -1317,3 +1317,36 @@ add_action('admin_enqueue_scripts', 'admin_style');
         // code to execute on cron run
         download_object('postali_project', 'example.json', get_template_directory() . '/inc/json/example.json');
     } add_action('my_cronjob_action_test', 'my_cronjob_action_test');
+
+
+// Select MySQL data and render on the page
+// Select MySQL data and render on the page
+
+    include '.env.php';
+
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT id, kind, fullName, age, gender, company FROM Persons";
+    $result = mysqli_query($conn, $sql);
+    echo "Render from Mysql Database:<br />";
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {
+            if ($current_user->user_login == $row["company"]) {
+                echo "id: " . $row["id"]. " - kind: " . $row["kind"]. " - Full Name: " . $row["fullName"].  " - age: " . $row["age"]. " - gender: " . $row["gender"]. " - company: " . $row["company"]. "<br />";
+            }
+        }
+    } else {
+        echo "0 results";
+    }
+
+    mysqli_close($conn);
+
+    // Remove this
+    require get_template_directory() . '/inc/json/json_mysql_cron.php';
+    require get_template_directory() . '/inc/json/test_json_fetch.php';
