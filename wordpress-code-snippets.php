@@ -1375,4 +1375,27 @@ add_action('admin_enqueue_scripts', 'admin_style');
         $sunday = strtotime('next monday', $day) - 1;
         echo date('Y-m-d', $sunday);
     }
-    get_last_week_dates();
+get_last_week_dates();
+
+<!-- #----------- -->
+// 	Smaller Functions
+<!-- #----------- -->
+
+function get_last_week_dates() {
+	// Last Week
+	echo  'Monday last week: '. date("m/d/Y", strtotime("last week monday"));
+	echo '<br />';
+	echo 'Last last week: '. date("m/d/Y", strtotime("last week sunday"));
+	echo '<br />';
+}
+get_last_week_dates();
+
+// Last Week
+function get_last_month_dates() {
+        $dt = date('Y-m-d', mktime(0,0,0,date('n')-1,1,date('Y')));
+        echo 'First day last Month: '. date("Y-m-01", strtotime($dt));
+		echo '<br />';
+	    echo 'Last day last Month: '. date("Y-m-t", strtotime($dt));
+}
+
+get_last_month_dates();	
