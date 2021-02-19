@@ -1381,8 +1381,9 @@ get_last_week_dates();
 // 	Smaller Functions
 <!-- #----------- -->
 
+<?php
+// Last Week Dates
 function get_last_week_dates() {
-	// Last Week
 	echo  'Monday last week: '. date("m/d/Y", strtotime("last week monday"));
 	echo '<br />';
 	echo 'Last last week: '. date("m/d/Y", strtotime("last week sunday"));
@@ -1390,7 +1391,9 @@ function get_last_week_dates() {
 }
 get_last_week_dates();
 
-// Last Week
+echo '<hr />';
+
+// Last Month Dates
 function get_last_month_dates() {
         $dt = date('Y-m-d', mktime(0,0,0,date('n')-1,1,date('Y')));
         echo 'First day last Month: '. date("Y-m-01", strtotime($dt));
@@ -1398,4 +1401,14 @@ function get_last_month_dates() {
 	    echo 'Last day last Month: '. date("Y-m-t", strtotime($dt));
 }
 
-get_last_month_dates();	
+get_last_month_dates();
+
+echo '<hr />';
+
+// This Month  Dates
+function get_this_month_dates() {
+		echo "First day this month: " . date('Y-m-01',strtotime('this month')) . '<br />';
+		echo "Today is: " . date("Y-m-d");
+}
+
+get_this_month_dates();
