@@ -1350,3 +1350,29 @@ add_action('admin_enqueue_scripts', 'admin_style');
     // Remove this
     require get_template_directory() . '/inc/json/json_mysql_cron.php';
     require get_template_directory() . '/inc/json/test_json_fetch.php';
+
+
+
+// Get last week date range using php
+// https://stackoverflow.com/questions/21644002/how-can-i-get-last-week-date-range-in-php
+
+ function get_last_week_dates()
+ {
+        // how can i get the date range last week ?
+        // ex: today is 2014-2-8
+        // the week date range of last week should be '2014-1-26 ~ 2014-2-1'
+
+        $startdate = "this monday";
+        if (date('N') !== '1')
+        { 
+            // it's not Monday today
+            $startdate .= " last week";
+        }
+        echo "<br />";
+        $day = strtotime($startdate);
+        echo date('Y-m-d', $day);   
+        echo "<br />";
+        $sunday = strtotime('next monday', $day) - 1;
+        echo date('Y-m-d', $sunday);
+    }
+    get_last_week_dates();
